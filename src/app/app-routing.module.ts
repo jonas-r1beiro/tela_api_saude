@@ -6,6 +6,9 @@ import { AtualizacaoMedicoComponent } from './components/medicos/atualizacao-med
 import { CadastroEspecialidadeComponent } from './components/especialidades/cadastro-especialidade/cadastro-especialidade.component';
 import { ListaEspecialidadeComponent } from './components/especialidades/lista-especialidade/lista-especialidade.component';
 import { AtualizacaoEspecialidadeComponent } from './components/especialidades/atualizacao-especialidade/atualizacao-especialidade.component';
+import { ListaPacienteComponent } from './components/pacientes/lista-paciente/lista-paciente.component';
+import { CadastroPacienteComponent } from './components/pacientes/cadastro-paciente/cadastro-paciente.component';
+import { AtualizacaoPacienteComponent } from './components/pacientes/atualizacao-paciente/atualizacao-paciente.component';
 
 const routes: Routes = [
   {
@@ -36,6 +39,18 @@ const routes: Routes = [
   {
     path: 'atualizar/especialidade/:id',
     component: AtualizacaoEspecialidadeComponent
+  },
+  {
+    path: 'listar/paciente',
+    component: ListaPacienteComponent
+  },
+  {
+    path: 'cadastrar/paciente',
+    component: CadastroPacienteComponent
+  },
+  {
+    path: 'atualizar/paciente/:id',
+    component: AtualizacaoPacienteComponent
   }
 ];
 

@@ -1,0 +1,83 @@
+<div class="containerCadastroExt">
+  <h1 class="tituloPagina">Atualização de paciente</h1>
+
+  <div class="containerCadastro">
+    <div class="containerInput">
+      <label for="id">ID do paciente: </label>
+      <input
+      type="text"
+      name="id"
+      id="id"
+      placeholder="ID do paciente"
+      disabled
+      [(ngModel)]="paciente.id"
+      >
+    </div>
+
+  <div class="containerCadastro">
+    <div class="containerInput">
+      <label for="nome">Nome: </label>
+      <input
+      type="text"
+      name="nome"
+      id="nome"
+      placeholder="Inserir o nome do paciente"
+      [(ngModel)]="paciente.nome"
+      >
+    </div>
+
+    <div class="containerInput">
+      <label for="dataNascimento">Data de nascimento: </label>
+      <input
+      type="date"
+      name="dataNascimento"
+      id="dataNascimento"
+      placeholder="Inserir a data de nascimento do paciente"
+      [(ngModel)]="paciente.dataNascimento"
+      >
+    </div>
+
+    <div class="containerInput">
+      <label for="cpf">CPF: </label>
+      <input
+      type="text"
+      name="cpf"
+      id="cpf"
+      placeholder="Inserir o CPF do paciente"
+      [(ngModel)]="paciente.cpf"
+      >
+    </div>
+
+    <div class="containerInput">
+      <label for="sexo">Sexo: </label>
+      <select id="sexo" name="sexo" [(ngModel)]="paciente.sexo">
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+    </select>
+    </div>
+
+    <div class="containerInput">
+      <label for="alergias">Alergias: </label>
+      <input
+      type="text"
+      name="alergias"
+      id="alergias"
+      placeholder="Inserir as alergias do paciente"
+      [(ngModel)]="paciente.alergias"
+      >
+    </div>
+
+    <div class="containerInput">
+      <label for="medicamentos">Medicamentos: </label>
+      <input
+      type="text"
+      name="medicamentos"
+      id="medicamentos"
+      placeholder="Inserir os medicamentos que o paciente faz uso"
+      [(ngModel)]="paciente.medicamentos"
+      >
+    </div>
+
+    <button class="botaoCadastrar" (click)="atualizarPaciente()">Cadastrar paciente</button>
+  </div>
+</div>

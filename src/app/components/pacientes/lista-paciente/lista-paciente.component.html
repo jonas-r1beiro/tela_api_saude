@@ -1,0 +1,33 @@
+<div class="containerLista">
+  <ng-container *ngIf="listaPacientes.length > 0, else semPaciente">
+    <h1 class="tituloPagina">Lista de pacientes</h1>
+    <table class="TabelaLista">
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Data de nascimento</th>
+        <th>CPF</th>
+        <th>Sexo</th>
+        <th>Alergias</th>
+        <th>Medicamentos</th>
+      </tr>
+      <tr *ngFor="let paciente of listaPacientes">
+        <td>{{paciente.id}}</td>
+        <td>{{paciente.nome}}</td>
+        <td>{{paciente.dataNascimento}}</td>
+        <td>{{paciente.cpf}}</td>
+        <td>{{paciente.sexo}}</td>
+        <td>{{paciente.alergias}}</td>
+        <td>{{paciente.medicamentos}}</td>
+        <td class="celulaAcoes">
+          <Button class="botaoExcluir" (click)="deletarPaciente(paciente.id !== undefined ? paciente.id : 0)">Excluir paciente</Button>
+          <Button class="botaoAtualizar" routerLink="/atualizar/paciente/{{paciente.id}}">Atualizar cadastro</Button>
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+</div>
+
+<ng-template #semPaciente>
+  <p>Não há medicos</p>
+</ng-template>

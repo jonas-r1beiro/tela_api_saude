@@ -33,7 +33,7 @@ export class CadastroMedicoComponent implements OnInit {
       this.medico.especialidades.push(parseInt(esp));
     });
 
-    this.service.criar(this.medico).subscribe((resp) =>{
+    this.service.criar(this.medico).subscribe(() =>{
       this.router.navigate(['/listarmedicos']);
     });
   }

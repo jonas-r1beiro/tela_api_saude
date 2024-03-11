@@ -1,5 +1,5 @@
 <div class="containerLista">
-  <ng-container *ngIf="listaEsp.length > 0">
+  <ng-container *ngIf="listaEsp.length > 0, else semEspecialidade">
     <h1 class="tituloPagina">Lista de especialidades</h1>
     <table class="TabelaLista">
       <tr>
@@ -18,6 +18,6 @@
   </ng-container>
 </div>
 
-<ng-template #semMedico>
+<ng-template #semEspecialidade>
   <p>Não há medicos</p>
 </ng-template>

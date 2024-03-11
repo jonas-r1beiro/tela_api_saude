@@ -30,8 +30,7 @@ export class ListaMedicoComponent implements OnInit {
   }
 
   deletarMedico(id: number){
-    this.service.excluir(id).subscribe((retorno) =>{
-      console.log('Retorno: ' ,retorno);
+    this.service.excluir(id).subscribe(() =>{
       this.recarregarComponent();
     });
   }

@@ -1,5 +1,5 @@
 <div class="containerLista">
-  <ng-container *ngIf="listaMedicos.length > 0">
+  <ng-container *ngIf="listaMedicos.length > 0, else semMedico">
     <h1 class="tituloPagina">Lista de médicos</h1>
     <table class="TabelaLista">
       <tr>
