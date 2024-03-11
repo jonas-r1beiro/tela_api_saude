@@ -1,0 +1,52 @@
+<div class="containerCadastroExt">
+  <h1 class="tituloPagina">Atualização de médico</h1>
+
+  <div class="containerCadastro">
+    <div class="containerInput">
+      <label for="id">ID do médico: </label>
+      <input
+      type="text"
+      name="id"
+      id="id"
+      placeholder="ID do médico"
+      disabled
+      [(ngModel)]="medico.id"
+      >
+    </div>
+
+    <div class="containerInput">
+      <label for="nome">Nome: </label>
+      <input
+      type="text"
+      name="nome"
+      id="nome"
+      placeholder="Inserir o nome do médico"
+      [(ngModel)]="medico.nome"
+      >
+    </div>
+
+    <div class="containerInput">
+      <label for="crm">CRM: </label>
+      <input
+      type="textarea"
+      name="crm"
+      id="crm"
+      placeholder="Inserir o CRM do médico"
+      [(ngModel)]="medico.crm"
+      >
+    </div>
+
+    <div class="containerInput">
+      <label for="especialidades">Especialidades: </label>
+      <input
+      type="text"
+      name="especialidades"
+      id="especialidades"
+      placeholder="Inserir os valores dos IDs das especialidades do médico, separados por vírgula"
+      [(ngModel)]="valorEspecialidade"
+      >
+    </div>
+
+    <button class="botaoCadastrar" (click)="atualizarMedico()">Cadastrar médico</button>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.cabecalho{
+  background-color: #036396;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.container_botoes{
+  display: flex;
+  gap: 20px;
+}
+
+.container_botoes{
+  margin-right: 10px;
+}
+
+.botao_navbar{
+  background-color: #AFE3FF;
+  border: none;
+  padding: 10px;
+  border-radius: 4%;
+  color: #1F1F1F;
+}
+
+.imagem_logo{
+  width: 40%;
+}

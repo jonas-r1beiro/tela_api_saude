@@ -1,0 +1,30 @@
+<div class="containerLista">
+  <ng-container *ngIf="listaMedicos.length > 0">
+    <h1 class="tituloPagina">Lista de médicos</h1>
+    <table class="TabelaLista">
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CRM</th>
+        <th>Especialidades</th>
+        <th>Ações</th>
+      </tr>
+      <tr *ngFor="let medico of listaMedicos">
+        <td>{{medico.id}}</td>
+        <td>{{medico.nome}}</td>
+        <td>{{medico.crm}}</td>
+        <td>
+          <p *ngFor="let especialidade of medico.especialidades">• {{especialidade.nome}}</p>
+        </td>
+        <td class="celulaAcoes">
+          <Button class="botaoExcluir" (click)="deletarMedico(medico.id !== undefined ? medico.id : 0)">Excluir médico</Button>
+          <Button class="botaoAtualizar" routerLink="/atualizarmedico/{{medico.id}}">Atualizar cadastro</Button>
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+</div>
+
+<ng-template #semMedico>
+  <p>Não há medicos</p>
+</ng-template>
