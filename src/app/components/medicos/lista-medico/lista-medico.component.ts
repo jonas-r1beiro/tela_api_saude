@@ -18,12 +18,10 @@ export class ListaMedicoComponent implements OnInit {
     }
 
     ngOnInit(): void {
-    this.service.listar().subscribe((listaMedicos) =>{
-    this.listaMedicos = this.listaMedicos.concat(listaMedicos);
-  });
-
-
-  }
+      this.service.listar().subscribe((listaMedicos) =>{
+        this.listaMedicos = this.listaMedicos.concat(listaMedicos);
+      });
+    }
 
   recarregarComponent(){
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;

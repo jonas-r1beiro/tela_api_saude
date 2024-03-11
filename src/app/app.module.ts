@@ -11,6 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CadastroMedicoComponent } from './components/medicos/cadastro-medico/cadastro-medico.component';
 import { FormsModule } from '@angular/forms';
 import { AtualizacaoMedicoComponent } from './components/medicos/atualizacao-medico/atualizacao-medico.component';
+import { CadastroEspecialidadeComponent } from './components/especialidades/cadastro-especialidade/cadastro-especialidade.component';
+import { AtualizacaoEspecialidadeComponent } from './components/especialidades/atualizacao-especialidade/atualizacao-especialidade.component';
+import { ListaEspecialidadeComponent } from './components/especialidades/lista-especialidade/lista-especialidade.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { AtualizacaoMedicoComponent } from './components/medicos/atualizacao-med
     ListaMedicoComponent,
     MenuComponent,
     CadastroMedicoComponent,
-    AtualizacaoMedicoComponent
+    AtualizacaoMedicoComponent,
+    CadastroEspecialidadeComponent,
+    AtualizacaoEspecialidadeComponent,
+    ListaEspecialidadeComponent
   ],
   imports: [
     BrowserModule,

@@ -34,7 +34,6 @@ export class CadastroMedicoComponent implements OnInit {
     });
 
     this.service.criar(this.medico).subscribe((resp) =>{
-      console.log(resp);
       this.router.navigate(['/listarmedicos']);
     });
   }

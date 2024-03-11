@@ -1,0 +1,23 @@
+<div class="containerLista">
+  <ng-container *ngIf="listaEsp.length > 0">
+    <h1 class="tituloPagina">Lista de especialidades</h1>
+    <table class="TabelaLista">
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+      </tr>
+      <tr *ngFor="let especialidade of listaEsp">
+        <td>{{especialidade.id}}</td>
+        <td>{{especialidade.nome}}</td>
+        <td class="celulaAcoes">
+          <Button class="botaoExcluir" (click)="deletarEspecialidade(especialidade.id !== undefined ? especialidade.id : 0)">Excluir especialidade</Button>
+          <Button class="botaoAtualizar" routerLink="/atualizar/especialidade/{{especialidade.id}}">Atualizar especialidade</Button>
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+</div>
+
+<ng-template #semMedico>
+  <p>Não há medicos</p>
+</ng-template>

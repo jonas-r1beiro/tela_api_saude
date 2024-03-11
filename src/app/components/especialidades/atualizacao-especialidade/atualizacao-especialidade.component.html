@@ -1,0 +1,30 @@
+<div class="containerCadastroExt">
+  <h1 class="tituloPagina">Atualização de especialidade</h1>
+
+  <div class="containerCadastro">
+    <div class="containerInput">
+      <label for="id">ID da especialidade: </label>
+      <input
+      type="text"
+      name="id"
+      id="id"
+      placeholder="ID da especialidade"
+      disabled
+      [(ngModel)]="especialidade.id"
+      >
+    </div>
+
+    <div class="containerInput">
+      <label for="nome">Nome: </label>
+      <input
+      type="text"
+      name="nome"
+      id="nome"
+      placeholder="Inserir o nome da especialidade"
+      [(ngModel)]="especialidade.nome"
+      >
+    </div>
+
+    <button class="botaoCadastrar" (click)="atualizarEspecialidade()">Atualizar especialidade</button>
+  </div>
+</div>
