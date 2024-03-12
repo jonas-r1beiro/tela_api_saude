@@ -1,3 +1,4 @@
+import { Paciente } from './../../pacientes/paciente';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConsultaService } from '../consulta.service';
@@ -16,6 +17,9 @@ export class ListaConsultaComponent implements OnInit {
 
   horarioTela: string | undefined = '';
 
+  idPaciente: Paciente | undefined;
+
+
   constructor(
     private service: ConsultaService,
     private router: Router,
@@ -25,13 +29,12 @@ export class ListaConsultaComponent implements OnInit {
   ngOnInit(): void {
     this.service.listar().subscribe((listaConsulta) =>{
       this.listaConsulta = this.listaConsulta.concat(listaConsulta);
+
       this.listaConsulta.forEach((consulta) =>{
         const dh = new Date(consulta.dataHora);
         dh.setHours(dh.getHours() + 3);
         this.horarioTela = this.datePipe.transform(dh, 'dd/MM/yyyy HH:mm')?.toString();
-        console.log(this.horarioTela);
       })
-      console.log(this.listaConsulta[0]);
     });
   }
 

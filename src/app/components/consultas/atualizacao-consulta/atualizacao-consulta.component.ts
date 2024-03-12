@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ConsultaService } from '../consulta.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConsultaCadastro } from '../consulta';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-atualizacao-consulta',
   templateUrl: './atualizacao-consulta.component.html',
-  styleUrls: ['./atualizacao-consulta.component.css']
+  styleUrls: ['./atualizacao-consulta.component.css'],
+  providers: [DatePipe]
 })
 export class AtualizacaoConsultaComponent implements OnInit {
 
@@ -18,10 +20,13 @@ export class AtualizacaoConsultaComponent implements OnInit {
     dataHora: new Date
   }
 
+  dataHoraTela: Date | undefined;
+
   constructor(
     private service: ConsultaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private datePipe: DatePipe
   ) {
   }
 
@@ -31,14 +36,14 @@ export class AtualizacaoConsultaComponent implements OnInit {
     if (id) {
       this.service.buscarPorId(parseInt(id)).subscribe((consulta) => {
         this.consulta.id = consulta.id;
-        if (consulta.idPaciente.id) {
-          this.consulta.idPaciente = consulta.idPaciente.id;
+        if (consulta.paciente.id) {
+          this.consulta.idPaciente = consulta.paciente.id;
         }
-        if (consulta.idMedico.id) {
-          this.consulta.idMedico = consulta.idMedico.id;
+        if (consulta.medico.id) {
+          this.consulta.idMedico = consulta.medico.id;
         }
-        if (consulta.idEspecialidade.id) {
-          this.consulta.idEspecialidade = consulta.idEspecialidade.id
+        if (consulta.especialidade.id) {
+          this.consulta.idEspecialidade = consulta.especialidade.id
         }
         this.consulta.dataHora = consulta.dataHora;
       })

@@ -12,8 +12,8 @@ export interface ConsultaCadastro{
 
 export interface Consulta{
   id?: number,
-  idPaciente: Paciente,
-  idMedico: Medico,
-  idEspecialidade: Especialidade,
+  paciente: Paciente,
+  medico: Medico,
+  especialidade: Especialidade,
   dataHora: Date
 }
