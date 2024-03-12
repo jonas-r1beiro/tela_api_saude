@@ -7,7 +7,7 @@ export interface ConsultaCadastro{
   idPaciente: number,
   idMedico: number,
   idEspecialidade: number,
-  dataHora: Date
+  dataHora: Date | string | null
 }
 
 export interface Consulta{
