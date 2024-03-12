@@ -9,12 +9,24 @@ import { AtualizacaoEspecialidadeComponent } from './components/especialidades/a
 import { ListaPacienteComponent } from './components/pacientes/lista-paciente/lista-paciente.component';
 import { CadastroPacienteComponent } from './components/pacientes/cadastro-paciente/cadastro-paciente.component';
 import { AtualizacaoPacienteComponent } from './components/pacientes/atualizacao-paciente/atualizacao-paciente.component';
+import { CadastroConsultaComponent } from './components/consultas/cadastro-consulta/cadastro-consulta.component';
+import { ListaConsultaComponent } from './components/consultas/lista-consulta/lista-consulta.component';
+import { AtualizacaoConsultaComponent } from './components/consultas/atualizacao-consulta/atualizacao-consulta.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { MenuEspecialidadeComponent } from './components/especialidades/menu-especialidade/menu-especialidade.component';
+import { MenuConsultaComponent } from './components/consultas/menu-consulta/menu-consulta.component';
+import { MenuMedicoComponent } from './components/medicos/menu-medico/menu-medico.component';
+import { MenuPacienteComponent } from './components/pacientes/menu-paciente/menu-paciente.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'listarmedicos',
+    redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: MenuComponent
   },
   {
     path: 'listarmedicos',
@@ -51,6 +63,34 @@ const routes: Routes = [
   {
     path: 'atualizar/paciente/:id',
     component: AtualizacaoPacienteComponent
+  },
+  {
+    path: 'cadastrar/consulta',
+    component: CadastroConsultaComponent
+  },
+  {
+    path: 'listar/consulta',
+    component: ListaConsultaComponent
+  },
+  {
+    path: 'atualizar/consulta/:id',
+    component: AtualizacaoConsultaComponent
+  },
+  {
+    path: 'especialidade',
+    component: MenuEspecialidadeComponent
+  },
+  {
+    path: 'consulta',
+    component: MenuConsultaComponent
+  },
+  {
+    path: 'medico',
+    component: MenuMedicoComponent
+  },
+  {
+    path: 'paciente',
+    component: MenuPacienteComponent
   }
 ];
 

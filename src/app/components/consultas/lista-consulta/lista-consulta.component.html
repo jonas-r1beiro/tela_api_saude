@@ -1,0 +1,29 @@
+<div class="containerLista">
+  <ng-container *ngIf="listaConsulta.length > 0, else semConsulta">
+    <h1 class="tituloPagina">Lista de consultas</h1>
+    <table class="TabelaLista">
+      <tr>
+        <th>ID</th>
+        <th>ID do paciente</th>
+        <th>ID do médico</th>
+        <th>ID da especialidade</th>
+        <th>Data e hora</th>
+      </tr>
+      <tr *ngFor="let consulta of listaConsulta">
+        <td>{{consulta.id}}</td>
+        <td>{{consulta.idPaciente}}</td>
+        <td>{{consulta.idMedico}}</td>
+        <td>{{consulta.idEspecialidade}}</td>
+        <td>{{consulta.dataHora | date:'dd/MM/yyyy hh:mm'}}</td>
+        <td class="celulaAcoes">
+          <Button class="botaoExcluir" (click)="deletarConsulta(consulta.id !== undefined ? consulta.id : 0)">Excluir consulta</Button>
+          <Button class="botaoAtualizar" routerLink="/atualizar/consulta/{{consulta.id}}">Atualizar consulta</Button>
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+</div>
+
+<ng-template #semConsulta>
+  <p>Não há consultas</p>
+</ng-template>

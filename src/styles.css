@@ -81,3 +81,20 @@ td{
 input{
   width: 100%
 }
+
+.containerBotoesNavegacao{
+  display: flex;
+  width: auto;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10vh;
+}
+
+.BotaoNavegacao{
+  background-color: #AFE3FF;
+  border: none;
+  border-radius: 7px;
+  padding: 5vh;
+  font-family: "Roboto", sans-serif;
+}

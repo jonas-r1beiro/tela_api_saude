@@ -23,7 +23,7 @@ export class CadastroEspecialidadeComponent implements OnInit {
   }
 
   cadastrarEspecialidade(){
-    this.service.criar(this.especialidade).subscribe((resp) =>{
+    this.service.criar(this.especialidade).subscribe(() =>{
       this.router.navigate(['/listar/especialidade']);
     });
   }
