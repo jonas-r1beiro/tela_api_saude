@@ -1,0 +1,17 @@
+Pontos pendentes da aplicação:
+- Demonstração de erros
+- Pesquisa especializada de pacientes por CPF na página de consultas
+- Drop down ao invés dos IDs
+- Login para usuários.
+- Mudar as informações da tabela de consulta, para mostrar outras informações que não sejam os IDs das FKs.
+
+Mudanças na API:
+- Criar exception para apontar quando há entidades pendentes da que está sendo excluida.
+- Criar consulta especializada para consulta, usando o CPF do paciente como referência.
+- Criar validação por token
+
+Pontos pendentes a documentação:
+- Criar docs com toda a regra de negócio
+- Refazer wireframe 
+- Refazer Roadmap
+- O Readme será apenas para pontuar principais pontos da aplicação

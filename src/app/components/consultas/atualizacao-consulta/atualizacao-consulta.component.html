@@ -4,36 +4,37 @@
   <div class="containerCadastro">
     <div class="containerInput">
       <label for="idConsulta">ID da consulta: </label>
-      <input type="number" name="idConsulta" id="idConsulta" placeholder="Inserir o ID da consulta"
-        disabled
+      <input type="number" name="idConsulta" id="idConsulta" placeholder="Inserir o ID da consulta" disabled
         [(ngModel)]="consulta.id">
     </div>
 
-  <div class="containerCadastro">
-    <div class="containerInput">
-      <label for="idPaciente">ID do paciente: </label>
-      <input type="number" name="idPaciente" id="idPaciente" placeholder="Inserir o ID do paciente"
-        [(ngModel)]="consulta.idPaciente">
-    </div>
 
-    <div class="containerInput">
-      <label for="idMedico">ID do médico: </label>
-      <input type="number" name="idMedico" id="idMedico" placeholder="Inserir o ID do médico"
-        [(ngModel)]="consulta.idMedico">
-    </div>
+      <div class="containerInput">
+        <label for="idPaciente">ID do paciente: </label>
+        <input type="number" name="idPaciente" id="idPaciente" placeholder="Inserir o ID do paciente"
+          [(ngModel)]="consulta.idPaciente">
+      </div>
 
-    <div class="containerInput">
-      <label for="idEspecialidade">ID da especialidade: </label>
-      <input type="number" name="idEspecialidade" id="idEspecialidade" placeholder="Inserir o ID da especialidade"
-        [(ngModel)]="consulta.idEspecialidade">
-    </div>
 
-    <div class="containerInput">
-      <label for="dataHora">Data e hora da consulta: </label>
-      <input type="datetime-local" name="dataHora" id="dataHora" placeholder="Inserir a data e hora da consulta"
-        [(ngModel)]="consulta.dataHora">
-    </div>
+      <div class="containerInput">
+        <label for="idMedico">ID do médico: </label>
+        <input type="number" name="idMedico" id="idMedico" placeholder="Inserir o ID do médico"
+          [(ngModel)]="consulta.idMedico">
+      </div>
 
-    <button class="botaoCadastrar" (click)="atualizarConsulta()">Cadastrar consulta</button>
+      <div class="containerInput">
+        <label for="idEspecialidade">ID da especialidade: </label>
+        <input type="number" name="idEspecialidade" id="idEspecialidade" placeholder="Inserir o ID da especialidade"
+          [(ngModel)]="consulta.idEspecialidade">
+      </div>
+
+      <div class="containerInput">
+        <label for="dataHora">Data e hora da consulta: </label>
+        <input type="datetime-local" name="dataHora" id="dataHora" placeholder="Inserir a data e hora da consulta"
+          [(ngModel)]="consulta.dataHora">
+      </div>
+
+      <button class="botaoCadastrar" (click)="atualizarConsulta()">Cadastrar consulta</button>
+    </div>
   </div>
-</div>
+
