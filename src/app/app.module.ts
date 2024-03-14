@@ -7,7 +7,7 @@ import { CabecalhoComponent } from './components/cabecalho/cabecalho.component';
 import { RodapeComponent } from './components/rodape/rodape.component';
 import { ListaMedicoComponent } from './components/medicos/lista-medico/lista-medico.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CadastroMedicoComponent } from './components/medicos/cadastro-medico/cadastro-medico.component';
 import { FormsModule } from '@angular/forms';
 import { AtualizacaoMedicoComponent } from './components/medicos/atualizacao-medico/atualizacao-medico.component';
@@ -24,6 +24,8 @@ import { MenuEspecialidadeComponent } from './components/especialidades/menu-esp
 import { MenuConsultaComponent } from './components/consultas/menu-consulta/menu-consulta.component';
 import { MenuMedicoComponent } from './components/medicos/menu-medico/menu-medico.component';
 import { MenuPacienteComponent } from './components/pacientes/menu-paciente/menu-paciente.component';
+import { LoginComponent } from './components/login/login.component';
+import { InterceptorsInterceptor } from './core/interceptor/interceptors.interceptor'
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { MenuPacienteComponent } from './components/pacientes/menu-paciente/menu
     MenuEspecialidadeComponent,
     MenuConsultaComponent,
     MenuMedicoComponent,
-    MenuPacienteComponent
+    MenuPacienteComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,11 @@ import { MenuPacienteComponent } from './components/pacientes/menu-paciente/menu
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorsInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

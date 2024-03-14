@@ -1,0 +1,27 @@
+<div class="containerCadastroExt containerLoginExt">
+  <div class="containerCadastro">
+    <!-- <form> -->
+      <div class="containerInput">
+        <label for="usuario">Usuário: </label>
+        <input
+        type="text"
+        name="usuario"
+        id="usuario"
+        placeholder="Inserir o nome de usuário"
+        [(ngModel)]="usuario"
+        >
+      </div>
+      <div class="containerInput">
+        <label for="senha">Senha: </label>
+        <input
+        type="password"
+        name="senha"
+        id="senha"
+        placeholder="Inserir a senha"
+        [(ngModel)]="senha"
+        >
+      </div>
+      <button class="botaoCadastrar" (click)="fazerLogin()">Fazer login</button>
+    <!-- </form> -->
+  </div>
+</div>

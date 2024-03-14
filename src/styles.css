@@ -113,3 +113,9 @@ footer{
   bottom: 0;
   width: auto;
 }
+
+form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
