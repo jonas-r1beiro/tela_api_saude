@@ -19,6 +19,8 @@ export class ListaConsultaComponent implements OnInit {
 
   idPaciente: Paciente | undefined;
 
+  cpfConsulta: string = '';
+
 
   constructor(
     private service: ConsultaService,
@@ -48,6 +50,22 @@ export class ListaConsultaComponent implements OnInit {
     this.service.excluir(id).subscribe(() =>{
       this.recarregarComponent();
     });
+  }
+
+  pesquisarPorCpf(){
+    this.service.buscarPorCpf(this.cpfConsulta).subscribe((listaConsulta) =>{
+      this.listaConsulta = [];
+      this.listaConsulta = this.listaConsulta.concat(listaConsulta);
+    })
+  }
+
+  limparPesquisa(){
+    this.cpfConsulta = '';
+
+    this.service.listar().subscribe((listaConsulta) =>{
+      this.listaConsulta = [];
+      this.listaConsulta = this.listaConsulta.concat(listaConsulta);
+    })
   }
 
 }

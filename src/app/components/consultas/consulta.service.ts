@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Cons, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Consulta, ConsultaCadastro } from './consulta';
@@ -33,5 +33,10 @@ export class ConsultaService {
   editar(consulta: ConsultaCadastro): Observable<Consulta>{
     const url = `${this.API}`;
     return this.http.put<Consulta>(url, consulta);
+  }
+
+  buscarPorCpf(cpf: string): Observable<Consulta[]>{
+    const url = `${this.API}/pesquisa_cpf/${cpf}`;
+    return this.http.get<Consulta[]>(url);
   }
 }

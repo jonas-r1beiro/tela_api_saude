@@ -1,6 +1,22 @@
 <div class="containerLista">
   <ng-container *ngIf="listaConsulta.length > 0, else semConsulta">
     <h1 class="tituloPagina">Lista de consultas</h1>
+    <div class="containerPesquisa">
+      <div class="containerInput">
+        <label for="cpf">Pesquisa por CPF: </label>
+          <input
+          type="text"
+          name="cpf"
+          id="cpf"
+          placeholder="Inserir o cpf para pesquisa"
+          [(ngModel)]="cpfConsulta"
+          >
+      </div>
+        <div class="containerBotoesPesquisa">
+          <button class="botaoPesquisa" (click)="pesquisarPorCpf()">Pesquisar</button>
+          <button class="botaoLimpar" (click)="limparPesquisa()">Limpar pesquisa</button>
+        </div>
+    </div>
     <table class="TabelaLista">
       <tr>
         <th>ID</th>

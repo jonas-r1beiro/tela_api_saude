@@ -1,0 +1,23 @@
+.containerPesquisa{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  flex-direction: column;
+  gap: 1vw;
+}
+
+input{
+  width: 50%;
+}
+
+.containerBotoesPesquisa{
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+}
+
+.botaoLimpar{
+  background-color: #AFE3FF;
+}
