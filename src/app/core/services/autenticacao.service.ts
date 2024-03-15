@@ -7,11 +7,6 @@ interface AuthResponse{
   token: string;
 }
 
-export interface dadosAutenticacao{
-  login: string,
-  senha: string
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -32,6 +27,10 @@ export class AutenticacaoService {
   autenticar(usuario: string, senha: string){
     this.dadosAutenticacao.login = usuario;
     this.dadosAutenticacao.senha = senha;
+
+    if(this.service.estaLogado()){
+      this.service.logout();
+    }
 
     return this.http.post<AuthResponse>(
       `${this.API}`,

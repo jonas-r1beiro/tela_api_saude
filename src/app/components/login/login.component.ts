@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/core/services/autenticacao.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   senha!: string;
 
   constructor(
-    private service: AutenticacaoService
+    private service: AutenticacaoService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +24,7 @@ export class LoginComponent implements OnInit {
   fazerLogin() {
 
     this.service.autenticar(this.usuario, this.senha).subscribe((response) =>{
-      console.log(response);
+      this.router.navigate(['/home']);
     })
   }
 

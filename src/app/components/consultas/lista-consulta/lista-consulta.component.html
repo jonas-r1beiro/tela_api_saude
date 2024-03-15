@@ -4,17 +4,17 @@
     <table class="TabelaLista">
       <tr>
         <th>ID</th>
-        <th>ID do paciente</th>
-        <th>ID do médico</th>
-        <th>ID da especialidade</th>
+        <th>Nome e CPF do paciente</th>
+        <th>Nome e CRM do médico</th>
+        <th>Especialidade</th>
         <th>Data e hora</th>
         <th>Ações</th>
       </tr>
       <tr *ngFor="let consulta of listaConsulta">
         <td>{{consulta.id}}</td>
-        <td>{{consulta.paciente.id}}</td>
-        <td>{{consulta.medico.id}}</td>
-        <td>{{consulta.especialidade.id}}</td>
+        <td>{{consulta.paciente.nome}} - {{consulta.paciente.cpf}}</td>
+        <td>{{consulta.medico.nome}} - {{consulta.medico.crm}}</td>
+        <td>{{consulta.especialidade.nome}}</td>
         <td>{{horarioTela}}</td>
         <td class="celulaAcoes">
           <Button class="botaoExcluir" (click)="deletarConsulta(consulta.id !== undefined ? consulta.id : 0)">Excluir consulta</Button>

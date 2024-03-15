@@ -3,6 +3,12 @@ import { ConsultaService } from '../consulta.service';
 import { ConsultaCadastro } from './../consulta';
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { MedicoService } from '../../medicos/medico.service';
+import { Medico } from '../../medicos/medico';
+import { PacienteService } from '../../pacientes/paciente.service';
+import { Paciente } from '../../pacientes/paciente';
+import { EspecialidadeService } from '../../especialidades/especialidade.service';
+import { Especialidade } from '../../especialidades/especialidade';
 
 @Component({
   selector: 'app-cadastro-consulta',
@@ -19,19 +25,46 @@ export class CadastroConsultaComponent implements OnInit {
     dataHora: new Date
   }
 
+  idMedico!: string;
+  idPaciente!: string;
+  idEspecialidade!: string;
+
+  listaMedico: Medico[] = [];
+  listaPaciente: Paciente[] = [];
+  listaEsp: Especialidade[] = [];
+
   constructor(
-    private service: ConsultaService,
+    private consultaService: ConsultaService,
     private router: Router,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private medicoService: MedicoService,
+    private pacienteService: PacienteService,
+    private especialdiadeService: EspecialidadeService
   ) { }
 
   ngOnInit(): void {
+    this.medicoService.listar().subscribe((listaMedico) => {
+      this.listaMedico = this.listaMedico.concat(listaMedico);
+    });
+
+    this.pacienteService.listar().subscribe((listaPaciente) =>{
+      this.listaPaciente = this.listaPaciente.concat(listaPaciente);
+    })
+
+    this.especialdiadeService.listar().subscribe((listaEsp) =>{
+      this.listaEsp = this.listaEsp.concat(listaEsp);
+    })
   }
 
   cadastrarConsulta(){
+    this.consulta.idPaciente = parseInt(this.idPaciente);
+    this.consulta.idMedico = parseInt(this.idMedico);
+    this.consulta.idEspecialidade = parseInt(this.idEspecialidade);
+
+    console.log(this.consulta);
+
     this.consulta.dataHora = this.datePipe.transform(this.consulta.dataHora, `yyyy-MM-ddTHH:mm:ss`);
-    console.log(this.consulta.dataHora);
-    this.service.criar(this.consulta).subscribe(() =>{
+    this.consultaService.criar(this.consulta).subscribe(() =>{
       this.router.navigate(['/listar/consulta']);
     });
   }

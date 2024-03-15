@@ -9,23 +9,24 @@
     </div>
 
 
+    <div class="containerInput">
+      <label for="idPaciente">CPF e nome do paciente: </label>
+      <input type="number" name="text" id="idPaciente" placeholder="{{cpfPaciente}} - {{nomePaciente}}" disabled>
+    </div>
+
       <div class="containerInput">
-        <label for="idPaciente">ID do paciente: </label>
-        <input type="number" name="idPaciente" id="idPaciente" placeholder="Inserir o ID do paciente"
-          [(ngModel)]="consulta.idPaciente">
+        <label for="idMedico">Médico: </label>
+          <select name="idMedico" id="idMedico" [(ngModel)]="idMedico">
+            <option *ngFor="let medico of listaMedico" value={{medico.id}}
+            >{{medico.nome}} - {{medico.crm}}</option>
+          </select>
       </div>
 
-
       <div class="containerInput">
-        <label for="idMedico">ID do médico: </label>
-        <input type="number" name="idMedico" id="idMedico" placeholder="Inserir o ID do médico"
-          [(ngModel)]="consulta.idMedico">
-      </div>
-
-      <div class="containerInput">
-        <label for="idEspecialidade">ID da especialidade: </label>
-        <input type="number" name="idEspecialidade" id="idEspecialidade" placeholder="Inserir o ID da especialidade"
-          [(ngModel)]="consulta.idEspecialidade">
+        <label for="idEspecialidade">Especialidade: </label>
+          <select name="idEspecialidade" id="idEspecialidade" [(ngModel)]="idEspecialidade">
+            <option *ngFor="let especialidade  of listaEsp" value={{especialidade.id}}>{{especialidade.nome}}</option>
+          </select>
       </div>
 
       <div class="containerInput">

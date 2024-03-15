@@ -27,3 +27,8 @@
 .imagem_logo{
   width: 40%;
 }
+
+.botao_navbar_logout{
+  background-color: red;
+  color: #0A0A0A;
+}
