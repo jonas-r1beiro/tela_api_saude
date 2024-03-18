@@ -1,8 +1,8 @@
 <div class="containerCadastroExt containerLoginExt">
-  <h1 class="tituloPagina">Cadastro de especialidade</h1>
+  <h1 class="tituloPagina">Bem vindo à Clínica Magna</h1>
   <div class="containerCadastro">
-
-    <!-- <form> -->
+    <h1 class="tituloPagina">Login</h1>
+    <form>
       <div class="containerInput">
         <label for="usuario">Usuário: </label>
         <input
@@ -11,7 +11,13 @@
         id="usuario"
         placeholder="Inserir o nome de usuário"
         [(ngModel)]="usuario"
+        ngModel
+        required
+        #usuarioLogin="ngModel"
         >
+      </div>
+      <div *ngIf="usuarioLogin?.invalid && usuarioLogin?.touched">
+        <app-mensagem-erro mensagem="É necessário preencher o campo de usuário"></app-mensagem-erro>
       </div>
       <div class="containerInput">
         <label for="senha">Senha: </label>
@@ -21,9 +27,20 @@
         id="senha"
         placeholder="Inserir a senha"
         [(ngModel)]="senha"
+        ngModel
+        required
+        #senhaLogin="ngModel"
         >
       </div>
-      <button class="botaoCadastrar" (click)="fazerLogin()">Fazer login</button>
-    <!-- </form> -->
+      <div *ngIf="senhaLogin?.invalid && senhaLogin?.touched">
+        <app-mensagem-erro mensagem="É necessário preencher o campo de senha"></app-mensagem-erro>
+      </div>
+      <div *ngIf="mensagemErroAuten">
+        <app-mensagem-erro mensagem="{{mensagemErroAuten}}"></app-mensagem-erro>
+      </div>
+      <button class="botaoCadastrar" (click)="fazerLogin()"
+      [disabled]="senhaLogin.invalid || usuarioLogin.invalid"
+      >Fazer login</button>
+    </form>
   </div>
 </div>

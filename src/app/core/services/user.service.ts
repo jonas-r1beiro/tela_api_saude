@@ -1,6 +1,6 @@
+import { Usuario } from './../interfaces/usuario';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Usuario } from '../interfaces/usuario';
 import { TokenService } from './token.service';
 import jwtDecode from 'jwt-decode';
 
@@ -10,6 +10,8 @@ import jwtDecode from 'jwt-decode';
 export class UserService {
 
   private userSubject = new BehaviorSubject<Usuario | null>(null);
+
+  usuario!: Usuario;
 
   constructor(
     private tokenService: TokenService
@@ -22,7 +24,9 @@ export class UserService {
    private decodificarJWT(){
     const token = this.tokenService.retornarToken();
     if(token){
-      const user = jwtDecode(token) as Usuario;
+      this.usuario = jwtDecode(token) as Usuario;
+
+      console.log(this.usuario);
     }
    }
 
@@ -44,5 +48,9 @@ export class UserService {
 
    estaLogado(){
     return this.tokenService.possuiToken();
+   }
+
+   getUsuario(){
+    return this.usuario;
    }
 }

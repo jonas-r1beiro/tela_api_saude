@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MedicoService } from '../medico.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MedicoCadastro } from '../medico';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-atualizacao-medico',
@@ -16,6 +17,8 @@ export class AtualizacaoMedicoComponent implements OnInit {
     crm: '',
     especialidades: []
   }
+
+  mensagemErro = '';
 
   valorEspecialidade = '';
 
@@ -49,7 +52,13 @@ export class AtualizacaoMedicoComponent implements OnInit {
       this.medico.especialidades.push(parseInt(esp));
     });
 
-    this.service.editar(this.medico).subscribe(() =>{
+    this.service.editar(this.medico).pipe(
+      catchError((erro) =>{
+        this.mensagemErro = erro.error;
+        return '';
+      })
+    )
+    .subscribe(() =>{
       this.router.navigate(['/listarmedicos']);
     })
   }

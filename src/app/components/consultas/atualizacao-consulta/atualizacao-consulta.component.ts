@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConsultaService } from '../consulta.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConsultaCadastro } from '../consulta';
+import { Consulta, ConsultaCadastro } from '../consulta';
 import { DatePipe } from '@angular/common';
 import { MedicoService } from '../../medicos/medico.service';
 import { PacienteService } from '../../pacientes/paciente.service';
@@ -9,6 +9,7 @@ import { EspecialidadeService } from '../../especialidades/especialidade.service
 import { Medico } from '../../medicos/medico';
 import { Paciente } from '../../pacientes/paciente';
 import { Especialidade } from '../../especialidades/especialidade';
+import { Observable, catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-atualizacao-consulta',
@@ -17,6 +18,8 @@ import { Especialidade } from '../../especialidades/especialidade';
   providers: [DatePipe]
 })
 export class AtualizacaoConsultaComponent implements OnInit {
+
+  mensagemErro!: string;
 
   consulta: ConsultaCadastro = {
     id: 0,
@@ -68,7 +71,8 @@ export class AtualizacaoConsultaComponent implements OnInit {
     let id: string | null = '';
     id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.service.buscarPorId(parseInt(id)).subscribe((consulta) => {
+      this.service.buscarPorId(parseInt(id))
+      .subscribe((consulta) => {
         this.consulta.id = consulta.id;
         if (consulta.paciente.id) {
           this.consulta.idPaciente = consulta.paciente.id;
@@ -94,7 +98,14 @@ export class AtualizacaoConsultaComponent implements OnInit {
     this.consulta.idEspecialidade = parseInt(this.idEspecialidade);
     this.consulta.idMedico = parseInt(this.idMedico);
 
-    this.service.editar(this.consulta).subscribe(() => {
+    this.service.editar(this.consulta).pipe(
+      catchError((erro) =>{
+        this.mensagemErro = erro.error;
+
+        return of();
+      })
+    )
+    .subscribe(() => {
       this.router.navigate(['/listar/consulta']);
     });
   }

@@ -10,9 +10,23 @@
       id="nome"
       placeholder="Inserir o nome da especialidade"
       [(ngModel)]="especialidade.nome"
+      ngModel
+      required
+      #nomeInput="ngModel"
       >
     </div>
+    <div *ngIf="nomeInput.touched && nomeInput.invalid">
+      <app-mensagem-erro mensagem="É necessário preencher o campo de nome"></app-mensagem-erro>
+    </div>
 
-    <button class="botaoCadastrar" (click)="cadastrarEspecialidade()">Cadastrar especialidade</button>
+    <div *ngIf="mensagemErro">
+      <app-mensagem-erro mensagem="{{mensagemErro}}"></app-mensagem-erro>
+    </div>
+
+
+
+    <button class="botaoCadastrar" (click)="cadastrarEspecialidade()"
+    [disabled]="nomeInput?.invalid"
+    >Cadastrar especialidade</button>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EspecialidadeService } from '../especialidade.service';
 import { Especialidade } from '../especialidade';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro-especialidade',
@@ -14,6 +15,8 @@ export class CadastroEspecialidadeComponent implements OnInit {
     nome: ''
   }
 
+  mensagemErro!: string;
+
   constructor(
     private service: EspecialidadeService,
     private router: Router
@@ -23,7 +26,14 @@ export class CadastroEspecialidadeComponent implements OnInit {
   }
 
   cadastrarEspecialidade(){
-    this.service.criar(this.especialidade).subscribe(() =>{
+    this.service.criar(this.especialidade).pipe(
+      catchError((erro) =>{
+        this.mensagemErro = erro.error;
+
+        return ''
+      })
+    )
+    .subscribe(() =>{
       this.router.navigate(['/listar/especialidade']);
     });
   }

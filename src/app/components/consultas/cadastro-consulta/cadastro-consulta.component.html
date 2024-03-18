@@ -4,31 +4,65 @@
   <div class="containerCadastro">
     <div class="containerInput">
       <label for="idPaciente">Paciente: </label>
-        <select name="idPaciente" id="idPaciente" [(ngModel)]="idPaciente">
+        <select name="idPaciente" id="idPaciente" [(ngModel)]="idPaciente"
+        ngModel
+        required
+        #escolhaPaciente="ngModel"
+        >
           <option *ngFor="let paciente of listaPaciente" value={{paciente.id}}>{{paciente.nome}} - {{paciente.cpf}}</option>
         </select>
+    </div>
+    <div *ngIf="escolhaPaciente?.invalid && escolhaPaciente?.touched">
+      <app-mensagem-erro mensagem="É necessário escolher quem é o paciente"></app-mensagem-erro>
     </div>
 
       <div class="containerInput">
         <label for="idMedico">Médico: </label>
-          <select name="idMedico" id="idMedico" [(ngModel)]="idMedico">
+          <select name="idMedico" id="idMedico" [(ngModel)]="idMedico"
+          ngModel
+          required
+          #escolhaMedico="ngModel"
+          >
             <option *ngFor="let medico of listaMedico" value={{medico.id}}>{{medico.nome}} - {{medico.crm}}</option>
           </select>
+      </div>
+      <div *ngIf="escolhaMedico?.invalid && escolhaMedico?.touched">
+        <app-mensagem-erro mensagem="É necessário escolher quem é o médico"></app-mensagem-erro>
       </div>
 
       <div class="containerInput">
         <label for="idEspecialidade">Especialidade: </label>
-          <select name="idEspecialidade" id="idEspecialidade" [(ngModel)]="idEspecialidade">
+          <select name="idEspecialidade" id="idEspecialidade" [(ngModel)]="idEspecialidade"
+          ngModel
+          required
+          #escolhaEsp="ngModel"
+          >
             <option *ngFor="let especialidade  of listaEsp" value={{especialidade.id}}>{{especialidade.nome}}</option>
           </select>
+      </div>
+      <div *ngIf="escolhaEsp?.invalid && escolhaEsp?.touched">
+        <app-mensagem-erro mensagem="É necessário escolher qual é a especialidade"></app-mensagem-erro>
       </div>
 
     <div class="containerInput">
       <label for="dataHora">Data e hora da consulta: </label>
       <input type="datetime-local" name="dataHora" id="dataHora" placeholder="Inserir a data e hora da consulta"
-        [(ngModel)]="consulta.dataHora">
+        valur=""
+        [(ngModel)]="consulta.dataHora"
+        ngModel
+        required
+        #escolhaDataHora="ngModel"
+        >
+        <div *ngIf="escolhaDataHora?.invalid && escolhaDataHora?.touched && escolhaDataHora.value != ''">
+          <app-mensagem-erro mensagem="É necessário escolher a data e a hora"></app-mensagem-erro>
+        </div>
     </div>
 
-    <button class="botaoCadastrar" (click)="cadastrarConsulta()">Cadastrar consulta</button>
+    <div *ngIf="mensagemErro">
+      <app-mensagem-erro mensagem="{{mensagemErro}}"></app-mensagem-erro>
+    </div>
+
+    <button class="botaoCadastrar" [disabled]="escolhaDataHora.invalid || escolhaEsp.invalid || escolhaPaciente.invalid || escolhaMedico.invalid"
+    (click)="cadastrarConsulta()">Cadastrar consulta</button>
   </div>
 </div>

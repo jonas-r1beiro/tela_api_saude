@@ -18,6 +18,7 @@ import { MenuConsultaComponent } from './components/consultas/menu-consulta/menu
 import { MenuMedicoComponent } from './components/medicos/menu-medico/menu-medico.component';
 import { MenuPacienteComponent } from './components/pacientes/menu-paciente/menu-paciente.component';
 import { LoginComponent } from './components/login/login.component';
+import { MenuVisaoPacienteComponent } from './components/menu-visao-paciente/menu-visao-paciente.component';
 
 const routes: Routes = [
   {
@@ -96,6 +97,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'menu-paciente',
+    component: MenuVisaoPacienteComponent
   }
 ];
 

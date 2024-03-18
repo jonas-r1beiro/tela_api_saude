@@ -21,6 +21,10 @@ export class ListaConsultaComponent implements OnInit {
 
   cpfConsulta: string = '';
 
+  regex = /^\d{1,11}$/;
+
+  mensagemErro = '';
+
 
   constructor(
     private service: ConsultaService,
@@ -41,6 +45,8 @@ export class ListaConsultaComponent implements OnInit {
   }
 
   recarregarComponent(){
+    this.mensagemErro = '';
+
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([this.router.url]);
@@ -56,15 +62,29 @@ export class ListaConsultaComponent implements OnInit {
     this.service.buscarPorCpf(this.cpfConsulta).subscribe((listaConsulta) =>{
       this.listaConsulta = [];
       this.listaConsulta = this.listaConsulta.concat(listaConsulta);
+
+
+      if(listaConsulta.length == 0){
+        this.mensagemErro = 'Não há resultados para essa pesquisa';
+        this.service.listar().subscribe((listaConsulta) =>{
+          this.listaConsulta = this.listaConsulta.concat(listaConsulta);
+        });
+      }else{
+        this.mensagemErro = '';
+      }
+
+
     })
   }
 
   limparPesquisa(){
+
     this.cpfConsulta = '';
 
     this.service.listar().subscribe((listaConsulta) =>{
       this.listaConsulta = [];
       this.listaConsulta = this.listaConsulta.concat(listaConsulta);
+      console.log('cpfConsulta: ', this.cpfConsulta);
     })
   }
 

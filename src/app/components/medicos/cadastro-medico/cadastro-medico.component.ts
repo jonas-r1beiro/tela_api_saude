@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MedicoService } from '../medico.service';
 import { Router } from '@angular/router';
 import { Medico, MedicoCadastro } from '../medico';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro-medico',
@@ -18,6 +19,8 @@ export class CadastroMedicoComponent implements OnInit {
     especialidades: []
   }
 
+  mensagemErro = '';
+
   constructor(
     private service: MedicoService,
     private router: Router
@@ -33,7 +36,13 @@ export class CadastroMedicoComponent implements OnInit {
       this.medico.especialidades.push(parseInt(esp));
     });
 
-    this.service.criar(this.medico).subscribe(() =>{
+    this.service.criar(this.medico).pipe(
+      catchError((erro) =>{
+        this.mensagemErro = erro.error;
+        return '';
+      })
+    )
+    .subscribe(() =>{
       this.router.navigate(['/listarmedicos']);
     });
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PacienteService } from '../paciente.service';
 import { Router } from '@angular/router';
 import { Paciente } from '../paciente';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro-paciente',
@@ -19,6 +20,8 @@ export class CadastroPacienteComponent implements OnInit {
     medicamentos: ''
   }
 
+  mensagemErro = '';
+
   constructor(
     private service: PacienteService,
     private router: Router
@@ -28,7 +31,13 @@ export class CadastroPacienteComponent implements OnInit {
   }
 
   cadastrarPaciente(){
-    this.service.criar(this.paciente).subscribe(() =>{
+    this.service.criar(this.paciente).pipe(
+      catchError((erro) =>{
+        this.mensagemErro = erro.error;
+        return '';
+      })
+    )
+    .subscribe(() =>{
       this.router.navigate(['/listar/paciente']);
     });
   }

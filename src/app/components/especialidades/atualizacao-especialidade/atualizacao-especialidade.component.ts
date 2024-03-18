@@ -2,6 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Especialidade } from './../especialidade';
 import { Component, OnInit } from '@angular/core';
 import { EspecialidadeService } from '../especialidade.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-atualizacao-especialidade',
@@ -14,6 +15,8 @@ export class AtualizacaoEspecialidadeComponent implements OnInit {
     id: 0,
     nome: ''
   }
+
+  mensagemErro = '';
 
   constructor(
     private service: EspecialidadeService,
@@ -33,7 +36,13 @@ export class AtualizacaoEspecialidadeComponent implements OnInit {
   }
 
   atualizarEspecialidade(){
-    this.service.editar(this.especialidade).subscribe(() =>{
+    this.service.editar(this.especialidade).pipe(
+      catchError((erro) =>{
+        this.mensagemErro = erro.error;
+        return '';
+      })
+    )
+    .subscribe(() =>{
       this.router.navigate(['/listar/especialidade']);
     });
   }

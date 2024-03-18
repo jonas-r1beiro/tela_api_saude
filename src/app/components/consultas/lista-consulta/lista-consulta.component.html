@@ -10,7 +10,15 @@
           id="cpf"
           placeholder="Inserir o cpf para pesquisa"
           [(ngModel)]="cpfConsulta"
+          ngModel
+          #pesquisaCPF="ngModel"
           >
+      </div>
+      <div *ngIf="pesquisaCPF?.touched && !regex.test(cpfConsulta)">
+        <app-mensagem-erro mensagem="O CPF deve conter somente números, e, no máximo, 11"></app-mensagem-erro>
+      </div>
+      <div *ngIf="mensagemErro.length > 0">
+        <app-mensagem-erro mensagem="Não há resultados para essa busca"></app-mensagem-erro>
       </div>
         <div class="containerBotoesPesquisa">
           <button class="botaoPesquisa" (click)="pesquisarPorCpf()">Pesquisar</button>

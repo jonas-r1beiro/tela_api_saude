@@ -16,17 +16,31 @@
 
       <div class="containerInput">
         <label for="idMedico">Médico: </label>
-          <select name="idMedico" id="idMedico" [(ngModel)]="idMedico">
+          <select name="idMedico" id="idMedico" [(ngModel)]="idMedico"
+          ngModel
+          required
+          #escolhaMedico="ngModel"
+          >
             <option *ngFor="let medico of listaMedico" value={{medico.id}}
             >{{medico.nome}} - {{medico.crm}}</option>
           </select>
       </div>
+      <div *ngIf="escolhaMedico?.invalid && escolhaMedico?.touched">
+        <app-mensagem-erro mensagem="É necessário escolher quem é o médico"></app-mensagem-erro>
+      </div>
 
       <div class="containerInput">
         <label for="idEspecialidade">Especialidade: </label>
-          <select name="idEspecialidade" id="idEspecialidade" [(ngModel)]="idEspecialidade">
+          <select name="idEspecialidade" id="idEspecialidade" [(ngModel)]="idEspecialidade"
+          ngModel
+          required
+          #escolhaEsp="ngModel"
+          >
             <option *ngFor="let especialidade  of listaEsp" value={{especialidade.id}}>{{especialidade.nome}}</option>
           </select>
+      </div>
+      <div *ngIf="escolhaEsp?.invalid && escolhaEsp?.touched">
+        <app-mensagem-erro mensagem="É necessário escolher qual é a especialidade"></app-mensagem-erro>
       </div>
 
       <div class="containerInput">
@@ -35,7 +49,13 @@
           [(ngModel)]="consulta.dataHora">
       </div>
 
-      <button class="botaoCadastrar" (click)="atualizarConsulta()">Cadastrar consulta</button>
+      <div *ngIf="mensagemErro">
+        <app-mensagem-erro mensagem="{{mensagemErro}}"></app-mensagem-erro>
+      </div>
+
+      <button class="botaoCadastrar" (click)="atualizarConsulta()"
+      [disabled]="escolhaEsp.invalid || escolhaMedico.invalid"
+      >Cadastrar consulta</button>
     </div>
   </div>
 

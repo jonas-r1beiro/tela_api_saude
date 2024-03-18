@@ -10,7 +10,14 @@
       id="nome"
       placeholder="Inserir o nome do médico"
       [(ngModel)]="medico.nome"
+      ngModel
+      required
+      #nomeInput="ngModel"
       >
+    </div>
+
+    <div *ngIf="nomeInput?.touched && nomeInput?.invalid">
+      <app-mensagem-erro mensagem="O nome do médico deve ser preenchido"></app-mensagem-erro>
     </div>
 
     <div class="containerInput">
@@ -21,7 +28,15 @@
       id="crm"
       placeholder="Inserir o CRM do médico"
       [(ngModel)]="medico.crm"
+      required
+      pattern="^\d{6}$"
+      #crmInput="ngModel"
       >
+    </div>
+
+    <div *ngIf="crmInput?.touched && crmInput?.invalid">
+      <app-mensagem-erro *ngIf="crmInput?.errors?.['required']"  mensagem="O CRM deve ser preechido"></app-mensagem-erro>
+      <app-mensagem-erro *ngIf="crmInput?.errors?.['pattern']" mensagem="O CRM deve conter apenas 6 dígitos númericos"></app-mensagem-erro>
     </div>
 
     <div class="containerInput">
@@ -32,9 +47,22 @@
       id="especialidades"
       placeholder="Inserir os valores dos IDs das especialidades do médico, separados por vírgula"
       [(ngModel)]="valorEspecialidades"
+      ngModel
+      required
+      #espInput="ngModel"
       >
     </div>
 
-    <button class="botaoCadastrar" (click)="cadastrarMedico()">Cadastrar médico</button>
+    <div *ngIf="espInput?.touched && espInput?.invalid">
+      <app-mensagem-erro *ngIf="espInput?.errors?.['required']" mensagem="O Campo de especialidade deve ser preechido"></app-mensagem-erro>
+    </div>
+
+    <div *ngIf="mensagemErro.length > 0">
+      <app-mensagem-erro mensagem="{{mensagemErro}}"></app-mensagem-erro>
+    </div>
+
+    <button class="botaoCadastrar" (click)="cadastrarMedico()"
+    [disabled]="nomeInput?.invalid || espInput?.invalid || crmInput?.invalid"
+    >Cadastrar médico</button>
   </div>
 </div>

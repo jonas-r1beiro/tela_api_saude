@@ -51,6 +51,10 @@ td{
   color: #0A0A0A;
 }
 
+.botaoAtualizar:disabled, .botaoCadastrar:disabled, .botaoPesquisa:disabled{
+  opacity: 0.6;
+}
+
 .botaoCadastrar{
   margin-top: 2vh;
 }
@@ -80,7 +84,7 @@ td{
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin: 7px 10px;
 }
 
 input{
@@ -123,4 +127,8 @@ form{
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.ContainerErro{
+  color: #C20006;
 }

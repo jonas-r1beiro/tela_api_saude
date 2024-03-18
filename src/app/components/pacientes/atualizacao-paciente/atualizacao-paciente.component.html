@@ -23,7 +23,14 @@
       id="nome"
       placeholder="Inserir o nome do paciente"
       [(ngModel)]="paciente.nome"
+      ngModel
+      required
+      #nomeInput="ngModel"
       >
+    </div>
+
+    <div *ngIf="nomeInput?.invalid && nomeInput?.touched">
+      <app-mensagem-erro mensagem="O nome do paciente deve ser preenchido"></app-mensagem-erro>
     </div>
 
     <div class="containerInput">
@@ -34,7 +41,14 @@
       id="dataNascimento"
       placeholder="Inserir a data de nascimento do paciente"
       [(ngModel)]="paciente.dataNascimento"
+      ngModel
+      required
+      #dataNascimentoInput="ngModel"
       >
+    </div>
+
+    <div *ngIf="dataNascimentoInput?.touched && dataNascimentoInput?.invalid">
+      <app-mensagem-erro mensagem="A data de nascimento deve ser preenchida"></app-mensagem-erro>
     </div>
 
     <div class="containerInput">
@@ -45,15 +59,31 @@
       id="cpf"
       placeholder="Inserir o CPF do paciente"
       [(ngModel)]="paciente.cpf"
+      required
+      pattern="^\d{11}$"
+      #cpfInput="ngModel"
       >
+    </div>
+
+    <div *ngIf="cpfInput?.touched && cpfInput?.invalid">
+      <app-mensagem-erro *ngIf="cpfInput?.errors?.['required']" mensagem="O campo de CPF deve ser preenchido"></app-mensagem-erro>
+      <app-mensagem-erro *ngIf="cpfInput?.errors?.['pattern']" mensagem="O campo de CPF deve conter 11 digitos númericos"></app-mensagem-erro>
     </div>
 
     <div class="containerInput">
       <label for="sexo">Sexo: </label>
-      <select id="sexo" name="sexo" [(ngModel)]="paciente.sexo">
+      <select id="sexo" name="sexo" [(ngModel)]="paciente.sexo"
+      ngModel
+      required
+      #escolhaInput="ngModel"
+      >
         <option value="M">Masculino</option>
         <option value="F">Feminino</option>
     </select>
+    </div>
+
+    <div *ngIf="escolhaInput?.touched && escolhaInput?.invalid">
+      <app-mensagem-erro mensagem="O sexo do paciente deve ser selecionado"></app-mensagem-erro>
     </div>
 
     <div class="containerInput">
@@ -78,6 +108,12 @@
       >
     </div>
 
-    <button class="botaoCadastrar" (click)="atualizarPaciente()">Cadastrar paciente</button>
+    <div *ngIf="mensagemErro.length > 0">
+      <app-mensagem-erro mensagem="{{mensagemErro}}"></app-mensagem-erro>
+    </div>
+
+    <button class="botaoCadastrar" (click)="atualizarPaciente()"
+    [disabled]="escolhaInput?.invalid || nomeInput?.invalid || cpfInput?.invalid || dataNascimentoInput?.invalid"
+    >Cadastrar paciente</button>
   </div>
 </div>

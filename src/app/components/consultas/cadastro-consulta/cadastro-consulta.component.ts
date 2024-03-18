@@ -9,6 +9,7 @@ import { PacienteService } from '../../pacientes/paciente.service';
 import { Paciente } from '../../pacientes/paciente';
 import { EspecialidadeService } from '../../especialidades/especialidade.service';
 import { Especialidade } from '../../especialidades/especialidade';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro-consulta',
@@ -17,6 +18,8 @@ import { Especialidade } from '../../especialidades/especialidade';
   providers: [DatePipe]
 })
 export class CadastroConsultaComponent implements OnInit {
+
+  mensagemErro!: string;
 
   consulta: ConsultaCadastro = {
     idPaciente: 0,
@@ -54,6 +57,7 @@ export class CadastroConsultaComponent implements OnInit {
     this.especialdiadeService.listar().subscribe((listaEsp) =>{
       this.listaEsp = this.listaEsp.concat(listaEsp);
     })
+
   }
 
   cadastrarConsulta(){
@@ -64,7 +68,14 @@ export class CadastroConsultaComponent implements OnInit {
     console.log(this.consulta);
 
     this.consulta.dataHora = this.datePipe.transform(this.consulta.dataHora, `yyyy-MM-ddTHH:mm:ss`);
-    this.consultaService.criar(this.consulta).subscribe(() =>{
+    this.consultaService.criar(this.consulta).pipe(
+      catchError((erro) =>{
+        this.mensagemErro = erro.error;
+
+        return '';
+      })
+    )
+    .subscribe(() =>{
       this.router.navigate(['/listar/consulta']);
     });
   }
