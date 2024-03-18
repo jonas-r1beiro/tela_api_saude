@@ -34,10 +34,11 @@ td{
   padding: 2vh 0;
 }
 
-.botaoExcluir, .botaoAtualizar, .botaoCadastrar, .botaoPesquisa, .botaoLimpar{
+.botaoExcluir, .botaoAtualizar, .botaoCadastrar, .botaoPesquisa, .botaoLimpar, .botaoRetorno{
   padding: 10px;
   border: none;
   border-radius: 10px;
+  margin-top: 10px;
 }
 
 .botaoExcluir{
@@ -131,4 +132,8 @@ form{
 
 .ContainerErro{
   color: #C20006;
+}
+
+.botaoRetorno{
+  background-color: #036396;
 }

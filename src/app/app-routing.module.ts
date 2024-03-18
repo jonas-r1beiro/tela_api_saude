@@ -19,6 +19,11 @@ import { MenuMedicoComponent } from './components/medicos/menu-medico/menu-medic
 import { MenuPacienteComponent } from './components/pacientes/menu-paciente/menu-paciente.component';
 import { LoginComponent } from './components/login/login.component';
 import { MenuVisaoPacienteComponent } from './components/menu-visao-paciente/menu-visao-paciente.component';
+import { InformacoesPacienteComponent } from './components/informacoes-paciente/informacoes-paciente.component';
+import { ListaConsultasPacienteComponent } from './components/lista-consultas-paciente/lista-consultas-paciente.component';
+import { authGuard } from './core/guards/auth.guard';
+import { pacienteGuard } from './core/guards/paciente.guard';
+import { funcionarioGuard } from './core/guards/funcionario.guard';
 
 const routes: Routes = [
   {
@@ -28,71 +33,88 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: MenuComponent
+    component: MenuComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'listarmedicos',
-    component: ListaMedicoComponent
+    component: ListaMedicoComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'cadastrarmedico',
-    component: CadastroMedicoComponent
+    component: CadastroMedicoComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'atualizarmedico/:id',
-    component: AtualizacaoMedicoComponent
+    component: AtualizacaoMedicoComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'cadastrar/especialidade',
-    component: CadastroEspecialidadeComponent
+    component: CadastroEspecialidadeComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'listar/especialidade',
-    component: ListaEspecialidadeComponent
+    component: ListaEspecialidadeComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'atualizar/especialidade/:id',
-    component: AtualizacaoEspecialidadeComponent
+    component: AtualizacaoEspecialidadeComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'listar/paciente',
-    component: ListaPacienteComponent
+    component: ListaPacienteComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'cadastrar/paciente',
-    component: CadastroPacienteComponent
+    component: CadastroPacienteComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'atualizar/paciente/:id',
-    component: AtualizacaoPacienteComponent
+    component: AtualizacaoPacienteComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'cadastrar/consulta',
-    component: CadastroConsultaComponent
+    component: CadastroConsultaComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'listar/consulta',
-    component: ListaConsultaComponent
+    component: ListaConsultaComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'atualizar/consulta/:id',
-    component: AtualizacaoConsultaComponent
+    component: AtualizacaoConsultaComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'especialidade',
-    component: MenuEspecialidadeComponent
+    component: MenuEspecialidadeComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'consulta',
-    component: MenuConsultaComponent
+    component: MenuConsultaComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'medico',
-    component: MenuMedicoComponent
+    component: MenuMedicoComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'paciente',
-    component: MenuPacienteComponent
+    component: MenuPacienteComponent,
+    canActivate: [authGuard, funcionarioGuard]
   },
   {
     path: 'login',
@@ -100,7 +122,18 @@ const routes: Routes = [
   },
   {
     path: 'menu-paciente',
-    component: MenuVisaoPacienteComponent
+    component: MenuVisaoPacienteComponent,
+    canActivate: [authGuard, pacienteGuard]
+  },
+  {
+    path: 'informacoes-paciente',
+    component: InformacoesPacienteComponent,
+    canActivate: [authGuard,pacienteGuard]
+  },
+  {
+    path: 'lista-consultas-paciente',
+    component: ListaConsultasPacienteComponent,
+    canActivate: [authGuard, pacienteGuard]
   }
 ];
 

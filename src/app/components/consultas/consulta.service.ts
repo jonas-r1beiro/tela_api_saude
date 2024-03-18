@@ -39,4 +39,10 @@ export class ConsultaService {
     const url = `${this.API}/pesquisa_cpf/${cpf}`;
     return this.http.get<Consulta[]>(url);
   }
+
+  buscarPorIdPaciente(id: number): Observable<Consulta[]>{
+    const url = `${this.API}/pesquisa_id_paciente/${id}`;
+    return this.http.get<Consulta[]>(url);
+  }
+  
 }

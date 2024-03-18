@@ -31,7 +31,7 @@ export class UserService {
    }
 
    retornarUser(){
-    this.userSubject.asObservable();
+    return this.userSubject.asObservable();
    }
 
    salvarToken(token: string){

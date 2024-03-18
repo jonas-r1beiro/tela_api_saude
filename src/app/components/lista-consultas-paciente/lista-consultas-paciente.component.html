@@ -1,0 +1,25 @@
+<div class="containerLista">
+  <ng-container *ngIf="listaConsulta.length > 0, else semConsulta">
+    <h1 class="tituloPagina">Lista de consultas</h1>
+    <table class="TabelaLista">
+      <tr>
+        <th>ID</th>
+        <th>Nome e CPF do paciente</th>
+        <th>Nome e CRM do médico</th>
+        <th>Especialidade</th>
+        <th>Data e hora</th>
+      </tr>
+      <tr *ngFor="let consulta of listaConsulta">
+        <td>{{consulta.id}}</td>
+        <td>{{consulta.paciente.nome}} - {{consulta.paciente.cpf}}</td>
+        <td>{{consulta.medico.nome}} - {{consulta.medico.crm}}</td>
+        <td>{{consulta.especialidade.nome}}</td>
+        <td>{{horarioTela}}</td>
+      </tr>
+    </table>
+  </ng-container>
+</div>
+
+<ng-template #semConsulta>
+  <p>Não há consultas</p>
+</ng-template>

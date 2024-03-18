@@ -1,0 +1,14 @@
+input:disabled{
+  color: black;
+  background-color: #f0f0f0;
+}
+
+select:disabled{
+  color: black;
+  background-color: #f0f0f0;
+}
+
+option:disabled{
+  color: black;
+  background-color: #f0f0f0;
+}

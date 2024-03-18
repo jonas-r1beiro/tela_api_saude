@@ -3,11 +3,11 @@
     <img class="imagem_logo" src="../../../assets/imagens/magna_sistemas_logo.jpg" alt="Logo da Magna Sistemas" >
   </div>
   <div class="container_botoes">
-    <button class="botao_navbar" routerLink="/home">Home Page</button>
-    <button class="botao_navbar" routerLink="/consulta">Consultas</button>
-    <button class="botao_navbar" routerLink="/medico">Médicos</button>
-    <button class="botao_navbar" routerLink="/especialidade">Especialidades</button>
-    <button class="botao_navbar" routerLink="/paciente">Pacientes</button>
-    <button (click)="logout()" class="botao_navbar botao_navbar_logout">Log out</button>
+    <button *ngIf="estaLogado" class="botao_navbar" (click)="irHomePage()">Home Page</button>
+    <button *ngIf="estaLogado && papel == 'Funcionario'" class="botao_navbar" routerLink="/consulta">Consultas</button>
+    <button *ngIf="estaLogado && papel == 'Funcionario'" class="botao_navbar" routerLink="/medico">Médicos</button>
+    <button *ngIf="estaLogado && papel == 'Funcionario'" class="botao_navbar" routerLink="/especialidade">Especialidades</button>
+    <button *ngIf="estaLogado && papel == 'Funcionario'" class="botao_navbar" routerLink="/paciente">Pacientes</button>
+    <button *ngIf="estaLogado" class="botao_navbar botao_navbar_logout" (click)="logout()">Log out</button>
   </div>
 </header>

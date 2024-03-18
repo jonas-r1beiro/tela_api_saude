@@ -27,7 +27,9 @@ import { MenuPacienteComponent } from './components/pacientes/menu-paciente/menu
 import { LoginComponent } from './components/login/login.component';
 import { InterceptorsInterceptor } from './core/interceptor/interceptors.interceptor';
 import { MensagemErroComponent } from './components/mensagem-erro/mensagem-erro.component';
-import { MenuVisaoPacienteComponent } from './components/menu-visao-paciente/menu-visao-paciente.component'
+import { MenuVisaoPacienteComponent } from './components/menu-visao-paciente/menu-visao-paciente.component';
+import { InformacoesPacienteComponent } from './components/informacoes-paciente/informacoes-paciente.component';
+import { ListaConsultasPacienteComponent } from './components/lista-consultas-paciente/lista-consultas-paciente.component'
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { MenuVisaoPacienteComponent } from './components/menu-visao-paciente/men
     MenuPacienteComponent,
     LoginComponent,
     MensagemErroComponent,
-    MenuVisaoPacienteComponent
+    MenuVisaoPacienteComponent,
+    InformacoesPacienteComponent,
+    ListaConsultasPacienteComponent
   ],
   imports: [
     BrowserModule,
