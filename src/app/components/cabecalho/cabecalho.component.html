@@ -4,10 +4,10 @@
   </div>
   <div class="container_botoes">
     <button *ngIf="estaLogado" class="botao_navbar" (click)="irHomePage()">Home Page</button>
-    <button *ngIf="estaLogado && papel == 'Funcionario'" class="botao_navbar" routerLink="/consulta">Consultas</button>
-    <button *ngIf="estaLogado && papel == 'Funcionario'" class="botao_navbar" routerLink="/medico">Médicos</button>
-    <button *ngIf="estaLogado && papel == 'Funcionario'" class="botao_navbar" routerLink="/especialidade">Especialidades</button>
-    <button *ngIf="estaLogado && papel == 'Funcionario'" class="botao_navbar" routerLink="/paciente">Pacientes</button>
+    <button *ngIf="estaLogado && idPapel == 1" class="botao_navbar" routerLink="/consulta">Consultas</button>
+    <button *ngIf="estaLogado && idPapel == 1" class="botao_navbar" routerLink="/medico">Médicos</button>
+    <button *ngIf="estaLogado && idPapel == 1" class="botao_navbar" routerLink="/especialidade">Especialidades</button>
+    <button *ngIf="estaLogado && idPapel == 1" class="botao_navbar" routerLink="/paciente">Pacientes</button>
     <button *ngIf="estaLogado" class="botao_navbar botao_navbar_logout" (click)="logout()">Log out</button>
   </div>
 </header>

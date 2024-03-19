@@ -8,7 +8,7 @@ export const funcionarioGuard = () =>{
 
   if(userService.estaLogado()){
     let usuario = userService.getUsuario();
-    if(usuario.sub == "Funcionario"){
+    if(usuario.idPapel == 1){
       return true;
     }else{
       router.navigate(['/menu-paciente']);

@@ -18,11 +18,11 @@ export class CabecalhoComponent implements OnInit {
     router.events.subscribe(() =>{
       if(this.userService.estaLogado()){
         this.estaLogado = true;
-        this.papel = this.userService.getUsuario().sub;
+        this.idPapel = this.userService.getUsuario().idPapel;
 
       }else{
         this.estaLogado = false;
-        this.papel = '';
+        this.idPapel = 0;
       }
 
 
@@ -30,7 +30,7 @@ export class CabecalhoComponent implements OnInit {
   }
 
   estaLogado: boolean = false;
-  papel: string = '';
+  idPapel: number = 0;
 
   ngOnInit(): void {
   }
@@ -46,7 +46,7 @@ export class CabecalhoComponent implements OnInit {
   irHomePage(){
     let usuario = this.userService.getUsuario();
 
-    if(usuario.sub == "Paciente"){
+    if(usuario.idPapel == 2){
       this.router.navigate(['/menu-paciente']);
     }else{
       this.router.navigate(['/home']);

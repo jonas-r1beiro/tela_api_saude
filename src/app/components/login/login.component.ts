@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     .subscribe(() =>{
       let usuario = this.userService.getUsuario();
 
-      if(usuario.sub == "Paciente"){
+      if(usuario.idPapel == 2){
         this.router.navigate(['/menu-paciente']);
       }else{
         this.router.navigate(['/home']);

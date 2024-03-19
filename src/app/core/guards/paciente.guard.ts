@@ -8,7 +8,7 @@ export const pacienteGuard = () =>{
 
   if(userService.estaLogado()){
     let usuario = userService.getUsuario();
-    if(usuario.sub == "Paciente"){
+    if(usuario.idPapel == 2){
       return true;
     }else{
       router.navigate(['/home']);
