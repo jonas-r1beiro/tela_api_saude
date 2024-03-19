@@ -21,7 +21,7 @@ export class ListaConsultaComponent implements OnInit {
 
   cpfConsulta: string = '';
 
-  regex = /^\d{1,11}$/;
+  regex = /^\d{0,11}$/;
 
   mensagemErro = '';
 
@@ -80,11 +80,11 @@ export class ListaConsultaComponent implements OnInit {
   limparPesquisa(){
 
     this.cpfConsulta = '';
+    this.mensagemErro = '';
 
     this.service.listar().subscribe((listaConsulta) =>{
       this.listaConsulta = [];
       this.listaConsulta = this.listaConsulta.concat(listaConsulta);
-      console.log('cpfConsulta: ', this.cpfConsulta);
     })
   }
 

@@ -23,7 +23,6 @@ export class InformacoesPacienteComponent implements OnInit {
     if(usuario.idExterno){
       this.pacienteService.buscarPorId(usuario.idExterno).subscribe((paciente)=>{
         this.paciente = paciente;
-        console.log(this.paciente);
       });
     }
 

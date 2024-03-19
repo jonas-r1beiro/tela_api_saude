@@ -65,7 +65,6 @@ export class CadastroConsultaComponent implements OnInit {
     this.consulta.idMedico = parseInt(this.idMedico);
     this.consulta.idEspecialidade = parseInt(this.idEspecialidade);
 
-    console.log(this.consulta);
 
     this.consulta.dataHora = this.datePipe.transform(this.consulta.dataHora, `yyyy-MM-ddTHH:mm:ss`);
     this.consultaService.criar(this.consulta).pipe(

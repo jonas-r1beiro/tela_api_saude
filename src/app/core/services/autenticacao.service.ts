@@ -38,7 +38,6 @@ export class AutenticacaoService {
       {observe: 'response'}
     ).pipe(
       tap((response) =>{
-        console.log(response);
         const authToken = response.body?.token || '';
         this.service.salvarToken(authToken);
       })

@@ -25,8 +25,6 @@ export class UserService {
     const token = this.tokenService.retornarToken();
     if(token){
       this.usuario = jwtDecode(token) as Usuario;
-
-      console.log(this.usuario);
     }
    }
 
