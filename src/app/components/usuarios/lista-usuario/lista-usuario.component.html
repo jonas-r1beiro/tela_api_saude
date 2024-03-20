@@ -1,0 +1,28 @@
+<div class="containerLista">
+  <ng-container *ngIf="listaUsuarios.length > 0, else semPaciente">
+    <h1 class="tituloPagina">Lista de pacientes</h1>
+    <table class="TabelaLista">
+      <tr>
+        <th>ID</th>
+        <th>Login</th>
+        <th>ID xterno</th>
+        <th>Papel</th>
+        <th>Ações</th>
+      </tr>
+      <tr *ngFor="let usuario of listaUsuarios">
+        <td>{{usuario.id}}</td>
+        <td>{{usuario.login}}</td>
+        <td>{{usuario.idExterno}}</td>
+        <td>{{usuario.papel.nome}}</td>
+        <td class="celulaAcoes">
+          <Button class="botaoExcluir" (click)="deletarPaciente(usuario.id !== undefined ? usuario.id : 0)">Excluir usuário</Button>
+          <!-- <Button class="botaoAtualizar" routerLink="/atualizar/paciente/{{paciente.id}}">Atualizar cadastro</Button> -->
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+</div>
+
+<ng-template #semPaciente>
+  <p>Não há usuários</p>
+</ng-template>

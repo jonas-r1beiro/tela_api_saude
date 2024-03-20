@@ -1,0 +1,81 @@
+<div class="containerCadastroExt">
+  <h1 class="tituloPagina">Cadastro de usuário</h1>
+
+  <div class="containerCadastro">
+    <div class="containerInput">
+      <label for="login">Login: </label>
+      <input
+      type="text"
+      name="login"
+      id="login"
+      placeholder="Inserir o login do usuário"
+      [(ngModel)]="usuario.login"
+      ngModel
+      required
+      #loginInput="ngModel"
+      >
+    </div>
+
+    <div *ngIf="loginInput?.invalid && loginInput?.touched">
+      <app-mensagem-erro mensagem="O login do usuário deve ser preenchido"></app-mensagem-erro>
+    </div>
+
+    <div class="containerInput">
+      <label for="senha">Senha: </label>
+      <input
+      type="password"
+      name="senha"
+      id="senha"
+      placeholder="Inserir a senha do usuário"
+      [(ngModel)]="usuario.senha"
+      ngModel
+      required
+      #senhaInput="ngModel"
+      >
+    </div>
+
+    <div *ngIf="senhaInput?.touched && senhaInput?.invalid">
+      <app-mensagem-erro mensagem="A senha do usuário deve ser preenchida"></app-mensagem-erro>
+    </div>
+
+    <div class="containerInput">
+      <label for="papel">Papel: </label>
+      <select id="papel" name="papel" [(ngModel)]="idPapel"
+      ngModel
+      required
+      #escolhaInput="ngModel"
+      (change)="exibirIdExt()"
+      >
+        <option *ngFor="let papel of listaPapeis" value={{papel.id}}>{{papel.nome}}</option>
+    </select>
+    </div>
+
+    <div *ngIf="escolhaInput?.touched && escolhaInput?.invalid">
+      <app-mensagem-erro mensagem="O papel do usuário deve ser selecionado"></app-mensagem-erro>
+    </div>
+
+    <div class="containerInput">
+      <label for="idExterno">ID Externo: </label>
+      <select id="idExterno" name="idExterno" [(ngModel)]="idExterno"
+      ngModel
+      [disabled]="listaIdsExternos.length === 0"
+      [required]="listaIdsExternos.length > 0"
+      #idExtInput="ngModel"
+      >
+        <option *ngFor="let idExt of listaIdsExternos" value={{idExt.id}}>{{idExt.nome}} - {{idExt.cpf}}</option>
+    </select>
+    </div>
+
+    <div *ngIf="idExtInput?.touched && idExtInput?.invalid">
+      <app-mensagem-erro *ngIf="idExtInput?.errors?.['required']" mensagem="É necessário inserir o ID do paciente"></app-mensagem-erro>
+    </div>
+
+    <div *ngIf="mensagemErro.length > 0">
+      <app-mensagem-erro mensagem="{{mensagemErro}}"></app-mensagem-erro>
+    </div>
+
+    <button class="botaoCadastrar" (click)="cadastrarUsuario()"
+    [disabled]="loginInput.invalid || senhaInput.invalid || escolhaInput.invalid || idExtInput.invalid"
+    >Cadastrar usuário</button>
+  </div>
+</div>

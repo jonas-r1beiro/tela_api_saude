@@ -24,6 +24,9 @@ import { ListaConsultasPacienteComponent } from './components/lista-consultas-pa
 import { authGuard } from './core/guards/auth.guard';
 import { pacienteGuard } from './core/guards/paciente.guard';
 import { funcionarioGuard } from './core/guards/funcionario.guard';
+import { ListaUsuarioComponent } from './components/usuarios/lista-usuario/lista-usuario.component';
+import { MenuUsuarioComponent } from './components/usuarios/menu-usuario/menu-usuario.component';
+import { CadastroUsuarioComponent } from './components/usuarios/cadastro-usuario/cadastro-usuario.component';
 
 const routes: Routes = [
   {
@@ -114,6 +117,21 @@ const routes: Routes = [
   {
     path: 'paciente',
     component: MenuPacienteComponent,
+    canActivate: [authGuard, funcionarioGuard]
+  },
+  {
+    path: 'listar/usuario',
+    component: ListaUsuarioComponent,
+    canActivate: [authGuard, funcionarioGuard]
+  },
+  {
+    path: 'cadastrar/usuario',
+    component: CadastroUsuarioComponent,
+    canActivate: [authGuard, funcionarioGuard]
+  },
+  {
+    path: 'usuario',
+    component: MenuUsuarioComponent,
     canActivate: [authGuard, funcionarioGuard]
   },
   {
