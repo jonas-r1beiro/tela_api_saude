@@ -32,13 +32,13 @@ import { InformacoesPacienteComponent } from './components/informacoes-paciente/
 import { ListaConsultasPacienteComponent } from './components/lista-consultas-paciente/lista-consultas-paciente.component';
 import { ListaUsuarioComponent } from './components/usuarios/lista-usuario/lista-usuario.component';
 import { MenuUsuarioComponent } from './components/usuarios/menu-usuario/menu-usuario.component';
-import { CadastroUsuarioComponent } from './components/usuarios/cadastro-usuario/cadastro-usuario.component'
+import { CadastroUsuarioComponent } from './components/usuarios/cadastro-usuario/cadastro-usuario.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CabecalhoComponent,
     RodapeComponent,
     ListaMedicoComponent,
     MenuComponent,
@@ -70,7 +70,9 @@ import { CadastroUsuarioComponent } from './components/usuarios/cadastro-usuario
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    CabecalhoComponent
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

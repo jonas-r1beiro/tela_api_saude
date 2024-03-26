@@ -67,6 +67,7 @@ export class CadastroConsultaComponent implements OnInit {
 
 
     this.consulta.dataHora = this.datePipe.transform(this.consulta.dataHora, `yyyy-MM-ddTHH:mm:ss`);
+    console.log(this.consulta.dataHora);
     this.consultaService.criar(this.consulta).pipe(
       catchError((erro) =>{
         this.mensagemErro = erro.error;

@@ -2,11 +2,14 @@ import { CabecalhoService } from './../../core/services/cabecalho.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-cabecalho',
   templateUrl: './cabecalho.component.html',
-  styleUrls: ['./cabecalho.component.css']
+  styleUrls: ['./cabecalho.component.css'],
+  standalone: true,
+  imports: [NgIf]
 })
 export class CabecalhoComponent implements OnInit {
 

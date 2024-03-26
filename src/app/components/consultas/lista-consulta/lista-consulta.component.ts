@@ -13,9 +13,9 @@ import { DatePipe } from '@angular/common';
 })
 export class ListaConsultaComponent implements OnInit {
 
-  listaConsulta: Consulta[] = [];
+  offset = (new Date().getTimezoneOffset());
 
-  horarioTela: string | undefined = '';
+  listaConsulta: Consulta[] = [];
 
   idPaciente: Paciente | undefined;
 
@@ -37,9 +37,7 @@ export class ListaConsultaComponent implements OnInit {
       this.listaConsulta = this.listaConsulta.concat(listaConsulta);
 
       this.listaConsulta.forEach((consulta) =>{
-        const dh = new Date(consulta.dataHora);
-        dh.setHours(dh.getHours() + 3);
-        this.horarioTela = this.datePipe.transform(dh, 'dd/MM/yyyy HH:mm')?.toString();
+        consulta.dataHora.setHours(2);
       })
     });
   }
